@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>検索結果</title>
+</head>
+<body>
+  <h2>クエリ画像</h2>
+  <img src="{{ url_for('static', filename='uploads/' + query) }}" width="200">
+
+  <h2>類似画像（上位5件）</h2>
+  {% for fname, score in results %}
+    <div>
+      <img src="{{ url_for('static', filename='dataset/' + fname) }}" width="150">
+      <p>{{ fname }} - 類似度: {{ "%.2f"|format(score) }}</p>
+    </div>
+  {% endfor %}
+</body>
+</html>
